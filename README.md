@@ -15,9 +15,9 @@
 <br>
 <u>Patch Version</u>
 
-10.103.0.0-ypf
+10.103.0.1-ypf
 
 <br>
 <u>Corresponding Meisskey Version</u>
 
-10.102.496-m544
+10.102.504-m544

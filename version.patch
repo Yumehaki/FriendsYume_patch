@@ -5,10 +5,10 @@ diff -r -u "misskey-ypF-10.103.0.0\316\261/package.json" "misskey-ypF-10.103.0.0
  {
  	"name": "misskey",
 -	"author": "mei23 <m@m544.net>",
--	"version": "10.102.496-m544",
+-	"version": "10.102.504-m544",
 -	"codename": "m544",
 +	"author": "esorabi <aneqt@yumehaki.com> , konoha <konoha@yumehaki.com> | <admin@yumehaki.com>",
-+	"version": "10.103.0.0-ypf",
++	"version": "10.103.0.1-ypf",
 +	"codename": "ypf",
  	"repository": {
  		"type": "git",
