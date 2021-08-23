@@ -1,0 +1,46 @@
+<! DOCTYPE html>
+<html>
+<head>
+<meta charset = "utf-8"/>
+</head>
+<body>
+<h1>
+README 일본어 버전
+</h1>
+<h2>
+1. Meisskey의 도입 방법
+</h2>
+<a href="https://github.com/mei23/memo/blob/master/misskey/Setup-Ubuntu2004-Quick.md"> 여기 </a>를 참고. <br/> <br/>
+<h2>
+2. 도입 한 Meisskey에 친구 꿈으로 변환하는 방법 (처음에만)
+</h2>
+먼저 Meisskey를 1 장과 같이 소개한다.
+<pre> <code>
+$ sudo su - misskey # misskey 사용자로 전환
+$ cd ~ /misskey
+$ git clone https://github.com/Yumehaki/FriendsYume_patch.git patch
+$ cd patch
+$ ./update.bash # 만약 뭔가 질문 글이 돌아 오면 사라질 때까지 Enter 키를 누른다.
+</code> </pre> <br/> <br/>
+<h2>
+3. 도입 한 Meisskey에 친구 꿈으로 변환하는 방법 (2 회 이상)
+</h2>
+<pre> <code>
+$ sudo su - misskey # misskey 사용자로 전환
+$ cd ~ /misskey /patch
+$ git pull
+$ ./update.bash # 만약 뭔가 질문 글이 돌아 오면 사라질 때까지 Enter 키를 누른다.
+</code> </pre> <br/> <br/>
+<h2>
+4. 소스 코드를 구하는 방법
+</h2>
+<pre> <code>
+$ cd ~ # 소스 코드를두고 싶은 디렉토리로 이동
+$ git clone https://github.com/mei23/misskey.git -b 10.102.496-m544
+$ cd misskey
+$ git clone https://github.com/Yumehaki/FriendsYume_patch.git -b 10.103.0.0-ypf
+$ cd patch
+$ ./sourceCheck.bash # 만약 뭔가 질문 글이 돌아 오면 사라질 때까지 Enter 키를 누른다.
+</code> </pre> <br/> <br/>
+</body>
+</html>

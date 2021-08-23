@@ -1,0 +1,361 @@
+Only in misskey-a: .git
+diff -r -u misskey-a/.github/workflows/nodejs.yml "misskey-b/.github/workflows/nodejs.yml"
+--- misskey-a/.github/workflows/nodejs.yml	2021-08-23 02:04:09.463646400 +0900
++++ "misskey-b/.github/workflows/nodejs.yml"	2021-08-07 19:03:26.453252600 +0900
+@@ -29,6 +29,7 @@
+         node-version: ${{ matrix.node-version }}
+     - run: node cli/diag-environment.js
+     - run: yarn install
++    - run: git diff --exit-code yarn.lock
+     - run: yarn build
+     - run: cp test/test.yml .config/
+     - run: yarn test
+diff -r -u misskey-a/README.md "misskey-b/README.md"
+--- misskey-a/README.md	2021-08-23 02:04:09.485608900 +0900
++++ "misskey-b/README.md"	2021-08-07 20:33:48.988596000 +0900
+@@ -1,6 +1,6 @@
+-The fork of [Misskey](https://github.com/syuilo/misskey)
++The fork of [Misskey-m544](https://github.com/mei23/misskey) of [Misskey](https://github.com/syuilo/misskey)
+ 
+-![](https://github.com/mei23/misskey/workflows/Node.js%20CI/badge.svg)
++![](https://github.com/mei23/misskey/workflows/Node.js%20CI/badge.svg)
+ 
+-簡単なセットアップ方法はこの辺  
+-https://github.com/mei23/memo/blob/master/misskey/Setup-Ubuntu1804-Quick.md
++簡単なセットアップ方法はこちらのめいすきーの記事を参考にしてください。  
++https://github.com/mei23/memo/blob/master/misskey/Setup-Ubuntu2004-Quick.md
+diff -r -u misskey-a/locales/en-US.yml "misskey-b/locales/en-US.yml"
+--- misskey-a/locales/en-US.yml	2021-08-23 02:04:10.245606000 +0900
++++ "misskey-b/locales/en-US.yml"	2021-08-07 19:13:44.598441700 +0900
+@@ -59,12 +59,12 @@
+     future: "future"
+     just_now: "now"
+     seconds_ago: "{}s ago"
+-    minutes_ago: "{}m ago"
+-    hours_ago: "{}h ago"
+-    days_ago: "{}d ago"
+-    weeks_ago: "{}week(s) ago"
+-    months_ago: "{}month(s) ago"
+-    years_ago: "{}year(s) ago"
++    minutes_ago: "{}m {b}s ago"
++    hours_ago: "{}h {b}m ago"
++    days_ago: "{}day(s) {b}h ago"
++    weeks_ago: "{}week(s) {b}day(s) ago"
++    months_ago: "{}month(s) {b}week(s) ago"
++    years_ago: "{}year(s) {b}month(s) ago"
+   month-and-day: "{month}/{day}"
+   trash: "Trash"
+   drive: "Drive"
+diff -r -u misskey-a/locales/es-ES.yml "misskey-b/locales/es-ES.yml"
+--- misskey-a/locales/es-ES.yml	2021-08-23 02:04:10.248613300 +0900
++++ "misskey-b/locales/es-ES.yml"	2021-05-26 23:31:55.242892100 +0900
+@@ -39,12 +39,12 @@
+     future: "Futuro"
+     just_now: "Ahora mismo"
+     seconds_ago: "Hace {}"
+-    minutes_ago: "Hace {} minuto(s)"
+-    hours_ago: "Hace {} hora(s)"
+-    days_ago: "Hace {} dia(s)"
+-    weeks_ago: "Hace {} semana(s)"
+-    months_ago: "Hace {} mes(es)"
+-    years_ago: "Hace {} año(s)"
++    minutes_ago: "Hace {} minuto(s) {b} segundo(s)"
++    hours_ago: "Hace {} hora(s)  {b} minuto(s)"
++    days_ago: "Hace {} día(s) {b} hora(s)"
++    weeks_ago: "Hace {} semana(s) {b} día(s)"
++    months_ago: "Hace {} mes(es) {b} día(s)"
++    years_ago: "Hace {} año(s) y {b} mes(es)"
+   month-and-day: "{day} de {month}"
+   trash: "Papelera"
+   drive: "Drive"
+diff -r -u misskey-a/locales/ja-JP.yml "misskey-b/locales/ja-JP.yml"
+--- misskey-a/locales/ja-JP.yml	2021-08-23 02:04:10.257642800 +0900
++++ "misskey-b/locales/ja-JP.yml"	2021-08-07 19:10:47.525065800 +0900
+@@ -73,12 +73,12 @@
+     future: "未来"
+     just_now: "たった今"
+     seconds_ago: "{}秒前"
+-    minutes_ago: "{}分前"
+-    hours_ago: "{}時間前"
+-    days_ago: "{}日前"
+-    weeks_ago: "{}週間前"
+-    months_ago: "{}ヶ月前"
+-    years_ago: "{}年前"
++    minutes_ago: "{}分{b}秒前"
++    hours_ago: "{}時間{b}分前"
++    days_ago: "{}日{b}時間前"
++    weeks_ago: "{}週間{b}日前"
++    months_ago: "{}ヶ月{b}週間前"
++    years_ago: "{}年{b}ヶ月前"
+   month-and-day: "{month}月 {day}日"
+ 
+   trash: "ゴミ箱"
+diff -r -u misskey-a/locales/ja-KS.yml "misskey-b/locales/ja-KS.yml"
+--- misskey-a/locales/ja-KS.yml	2021-08-23 02:04:10.260609700 +0900
++++ "misskey-b/locales/ja-KS.yml"	2021-08-07 19:11:46.604922500 +0900
+@@ -45,12 +45,12 @@
+     future: "未来"
+     just_now: "たった今"
+     seconds_ago: "{}秒前"
+-    minutes_ago: "{}分前"
+-    hours_ago: "{}時間前"
+-    days_ago: "{}日前"
+-    weeks_ago: "{}週間前"
+-    months_ago: "{}ヶ月前"
+-    years_ago: "{}年前"
++    minutes_ago: "{}分{b}秒前"
++    hours_ago: "{}時間{b}分前"
++    days_ago: "{}日{b}時間前"
++    weeks_ago: "{}週間{b}日前"
++    months_ago: "{}ヶ月{b}週間前"
++    years_ago: "{}年{b}ヶ月前"
+   month-and-day: "{month}月 {day}日"
+   trash: "ゴミ箱"
+   drive: "ドライブ"
+diff -r -u misskey-a/locales/ru-RU.yml "misskey-b/locales/ru-RU.yml"
+--- misskey-a/locales/ru-RU.yml	2021-08-23 02:04:10.272610300 +0900
++++ "misskey-b/locales/ru-RU.yml"	2021-05-26 23:31:55.268890900 +0900
+@@ -42,12 +42,12 @@
+     future: "сейчас"
+     just_now: "сейчас"
+     seconds_ago: "{} секунд назад"
+-    minutes_ago: "{} минут назад"
+-    hours_ago: "{} часов назад"
+-    days_ago: "{} дней назад"
+-    weeks_ago: "{} недель назад"
+-    months_ago: "{} месяцев назад"
+-    years_ago: "{} лет назад"
++    minutes_ago: "{} минут {b} секунд назад"
++    hours_ago: "{} часов {b} минут назад"
++    days_ago: "{} дня {b} часа назад"
++    weeks_ago: "{} недели {b} дня назад"
++    months_ago: "{} месяца {b} дня назад"
++    years_ago: "{} года и {b} месяца назад"
+   month-and-day: "{day}.{month}"
+   trash: "Мусорное ведро"
+   drive: "Drive"
+diff -r -u misskey-a/locales/zh-TW.yml "misskey-b/locales/zh-TW.yml"
+--- misskey-a/locales/zh-TW.yml	2021-08-23 02:04:10.276610500 +0900
++++ "misskey-b/locales/zh-TW.yml"	2021-05-26 23:31:55.274893600 +0900
+@@ -22,6 +22,13 @@
+   time:
+     future: "未來"
+     just_now: "剛剛"
++    seconds_ago: "{}秒前"
++    minutes_ago: "{}分鐘{b}秒前"
++    hours_ago: "{}小時{b}分鐘前"
++    days_ago: "{}天{b}小時前"
++    weeks_ago: "{}週{b}天前"
++    months_ago: "{}個月{b}天前"
++    years_ago: "{}年{b}個月前"
+   drive: "雲端硬碟"
+   weekday:
+     sunday: "週日"
+diff -r -u misskey-a/src/client/app/common/views/components/autocomplete.vue "misskey-b/src/client/app/common/views/components/autocomplete.vue"
+--- misskey-a/src/client/app/common/views/components/autocomplete.vue	2021-08-23 02:04:10.506608400 +0900
++++ "misskey-b/src/client/app/common/views/components/autocomplete.vue"	2021-08-07 19:31:23.080257200 +0900
+@@ -104,6 +104,8 @@
+ 	{ name: 'x2', head: '<x2>', tail: '</x2>', desc: '<x2>🍮</x2>' },
+ 	{ name: 'x3', head: '<x3>', tail: '</x3>', desc: '<x3>🍮</x3>' },
+ 	{ name: 'x4', head: '<x4>', tail: '</x4>', desc: '<x4>🍮</x4>' },
++	{ name: 'x3', head: '<x5>', tail: '</x5>', desc: '<x5>🍮</x5>' },
++	{ name: 'x4', head: '<x6>', tail: '</x6>', desc: '<x6>🍮</x6>' },
+ 
+ 	{ name: 'color', head: '<color red blue>', tail: '</color>' },
+ 
+diff -r -u misskey-a/src/client/app/common/views/components/mfm.ts "misskey-b/src/client/app/common/views/components/mfm.ts"
+--- misskey-a/src/client/app/common/views/components/mfm.ts	2021-08-23 02:04:10.641606300 +0900
++++ "misskey-b/src/client/app/common/views/components/mfm.ts"	2021-08-07 19:32:13.685899800 +0900
+@@ -214,10 +214,18 @@
+ 							break;
+ 						}
+ 						case 'x3': {
+-							style = `font-size: 400%;`;
++							style = `font-size: 300%;`;
+ 							break;
+ 						}
+ 						case 'x4': {
++							style = `font-size: 400%;`;
++							break;
++						}
++						case 'x5': {
++							style = `font-size: 500%;`;
++							break;
++						}
++						case 'x6': {
+ 							style = `font-size: 600%;`;
+ 							break;
+ 						}
+@@ -401,12 +409,23 @@
+ 
+ 				case 'x3': {
+ 					return (createElement as any)('span', {
+-						style: `font-size: 400%;`
++						style: `font-size: 300%;`
+ 					}, genEl(node.children));
+ 				}
+ 
+ 				case 'x4': {
+ 					return (createElement as any)('span', {
++						style: `font-size: 400%;`
++					}, genEl(node.children));
++				}
++				case 'x5': {
++					return (createElement as any)('span', {
++						style: `font-size: 500%;`
++					}, genEl(node.children));
++				}
++
++				case 'x6': {
++					return (createElement as any)('span', {
+ 						style: `font-size: 600%;`
+ 					}, genEl(node.children));
+ 				}
+diff -r -u misskey-a/src/client/app/common/views/components/post-form-attaches.vue "misskey-b/src/client/app/common/views/components/post-form-attaches.vue"
+--- misskey-a/src/client/app/common/views/components/post-form-attaches.vue	2021-08-23 02:04:10.719638800 +0900
++++ "misskey-b/src/client/app/common/views/components/post-form-attaches.vue"	2021-08-07 19:26:25.515901100 +0900
+@@ -9,7 +9,7 @@
+ 			</div>
+ 		</div>
+ 	</x-draggable>
+-	<p class="remain">{{ 8 - files.length }}/8</p>
++	<p class="remain">{{ 20 - files.length }}/8</p>
+ </div>
+ </template>
+ 
+diff -r -u misskey-a/src/client/app/common/views/components/time.vue "misskey-b/src/client/app/common/views/components/time.vue"
+--- misskey-a/src/client/app/common/views/components/time.vue	2021-08-23 02:04:10.811645300 +0900
++++ "misskey-b/src/client/app/common/views/components/time.vue"	2021-08-07 19:08:53.696534200 +0900
+@@ -40,12 +40,12 @@
+ 			if (time == null) return this.$t('@.time.unknown');
+ 			const ago = (this.now.getTime() - time.getTime()) / 1000/*ms*/;
+ 			return (
+-				ago >= 31536000 ? this.$t('@.time.years_ago')  .replace('{}', (~~(ago / 31536000)).toString()) :
+-				ago >= 2592000  ? this.$t('@.time.months_ago') .replace('{}', (~~(ago / 2592000)).toString()) :
+-				ago >= 604800   ? this.$t('@.time.weeks_ago')  .replace('{}', (~~(ago / 604800)).toString()) :
+-				ago >= 86400    ? this.$t('@.time.days_ago')   .replace('{}', (~~(ago / 86400)).toString()) :
+-				ago >= 3600     ? this.$t('@.time.hours_ago')  .replace('{}', (~~(ago / 3600)).toString()) :
+-				ago >= 60       ? this.$t('@.time.minutes_ago').replace('{}', (~~(ago / 60)).toString()) :
++				ago >= 31536000 ? this.$t('@.time.years_ago')  .replace('{}', (~~(ago / 31536000)).toString()).replace('{b}', (~~(ago % 31536000 / 2592000)).toString()) :
++				ago >= 2592000  ? this.$t('@.time.months_ago') .replace('{}', (~~(ago / 2592000)).toString()).replace('{b}', (~~(ago % 2592000 / 604800)).toString()) :
++				ago >= 604800   ? this.$t('@.time.weeks_ago')  .replace('{}', (~~(ago / 604800)).toString()).replace('{b}', (~~(ago % 604800 / 86400)).toString()) :
++				ago >= 86400    ? this.$t('@.time.days_ago')   .replace('{}', (~~(ago / 86400)).toString()).replace('{b}', (~~(ago % 86400 / 3600)).toString()) :
++				ago >= 3600     ? this.$t('@.time.hours_ago')  .replace('{}', (~~(ago / 3600)).toString()).replace('{b}', (~~(ago % 3600 / 60)).toString()) :
++				ago >= 60       ? this.$t('@.time.minutes_ago').replace('{}', (~~(ago / 60)).toString()).replace('{b}', (~~(ago % 60)).toString()) :
+ 				ago >= 10       ? this.$t('@.time.seconds_ago').replace('{}', (~~(ago % 60)).toString()) :
+ 				ago >= -10      ? this.$t('@.time.just_now') :
+ 				this.$t('@.time.future'));
+diff -r -u misskey-a/src/client/app/common/views/directives/autocomplete.ts "misskey-b/src/client/app/common/views/directives/autocomplete.ts"
+--- misskey-a/src/client/app/common/views/directives/autocomplete.ts	2021-08-23 02:04:10.996611000 +0900
++++ "misskey-b/src/client/app/common/views/directives/autocomplete.ts"	2021-08-07 19:39:42.740663800 +0900
+@@ -83,6 +83,7 @@
+ 		const emojiIndex = text.lastIndexOf(':');
+ 		const angleIndex = text.lastIndexOf('<');
+ 		const fnIndex = text.lastIndexOf('[');
++		const groupIndex = text.lastIndexOf('$');
+ 
+ 		const max = Math.max(
+ 			mentionIndex,
+@@ -90,6 +91,7 @@
+ 			emojiIndex,
+ 			angleIndex,
+ 			fnIndex,
++			groupIndex,
+ 		);
+ 
+ 		if (max == -1) {
+@@ -102,6 +104,7 @@
+ 		const isEmoji = emojiIndex != -1;
+ 		const isAngle = angleIndex != -1;
+ 		const isFn = fnIndex != -1;
++		const isGroup = groupIndex != -1;
+ 
+ 		let opened = false;
+ 
+@@ -144,6 +147,14 @@
+ 				opened = true;
+ 			}
+ 		}
++		
++		if (isGroup) {
++			const groupname = text.substr(groupIndex + 1);
++			if (groupname.match(/^[\w-]+$/)) {
++				this.open('group', groupname);
++				opened = true;
++			}
++		}
+ 
+ 		if (!opened) {
+ 			this.close();
+diff -r -u misskey-a/src/client/app/common/views/pages/mfm-cheat-sheet.vue "misskey-b/src/client/app/common/views/pages/mfm-cheat-sheet.vue"
+--- misskey-a/src/client/app/common/views/pages/mfm-cheat-sheet.vue	2021-08-23 02:04:11.039681700 +0900
++++ "misskey-b/src/client/app/common/views/pages/mfm-cheat-sheet.vue"	2021-08-07 19:42:21.078555200 +0900
+@@ -291,7 +291,7 @@
+ 			preview_search: `MisskeyでFediverseの世界が広がります 検索`,
+ 			preview_title: `【タイトル】`,
+ 			preview_anime1: `<motion>モーション</motion>\n*** ビッグ＋ ***\n**** ビッグ＋＋ ****\n<jump>ジャンプ</jump>\n<blink>blink</blink> <twitch>twitch</twitch> <shake>shake</shake>`,
+-			preview_x: `<x2>🍮</x2>\n<x3>🍮</x3>\n<x4>🍮</x4>\n`,
++			preview_x: `<x2>🍮</x2>\n<x3>🍮</x3>\n<x4>🍮</x4>\n<x5>🍮</x5>\n<x6>🍮</x6>\n`,
+ 			preview_flip: '<flip>左右反転</flip>\n<vflip>上下反転</vflip>\n<flip><vflip>双方反転</vflip></flip>',
+ 			preview_spin: '<spin>回転</spin> <spin left>左回転</spin> <spin alternate>往復回転</spin>',
+ 			preview_xspin: '<xspin>回転</xspin> <xspin left>左回転</xspin> <xspin alternate>往復回転</xspin>',
+@@ -309,7 +309,7 @@
+ 			preview_fnSpeed: '[spin.y,left,speed=1s あいう]\n[spin.y,left,speed=2s あいう]\n[spin.y,left,speed=3s あいう]',
+ 			preview_fnDelay: '[spin.y,left,speed=1s,delay=0.1s あいう]\n[spin.y,left,speed=1s,delay=0.2s あいう]\n[spin.y,left,speed=1s,delay=0.3s あいう]',
+ 			preview_rgbshift: '<rgbshift>色ずれアニメーション効果です</rgbshift>',
+-			preview_x: '[x2 あいう]\n[x3 あいう]\n[x4 あいう]',
++			preview_x: '[x2 あいう]\n[x3 あいう]\n[x4 あいう]\n[x5 あいう]\n[x6 あいう]',
+ 			preview_blur: '[blur あいう]',
+ 			preview_font: '[font.serif serif]\n[font.monospace monospace]',
+ 
+diff -r -u misskey-a/src/mfm/language.ts "misskey-b/src/mfm/language.ts"
+--- misskey-a/src/mfm/language.ts	2021-08-23 02:04:11.858605500 +0900
++++ "misskey-b/src/mfm/language.ts"	2021-08-07 19:44:23.503533400 +0900
+@@ -77,6 +77,8 @@
+ 		r.x2,
+ 		r.x3,
+ 		r.x4,
++		r.x5,
++		r.x6,
+ 
+ 		r.fn,
+ 
+@@ -250,6 +252,8 @@
+ 	x2: r => P.regexp(/<x2>(.+?)<\/x2>/, 1).map(x => createMfmNode('x2', {}, r.inline.atLeast(1).tryParse(x))),
+ 	x3: r => P.regexp(/<x3>(.+?)<\/x3>/, 1).map(x => createMfmNode('x3', {}, r.inline.atLeast(1).tryParse(x))),
+ 	x4: r => P.regexp(/<x4>(.+?)<\/x4>/, 1).map(x => createMfmNode('x4', {}, r.inline.atLeast(1).tryParse(x))),
++	x5: r => P.regexp(/<x5>(.+?)<\/x5>/, 1).map(x => createMfmNode('x5', {}, r.inline.atLeast(1).tryParse(x))),
++	x6: r => P.regexp(/<x6>(.+?)<\/x6>/, 1).map(x => createMfmNode('x6', {}, r.inline.atLeast(1).tryParse(x))),
+ 
+ 	center: r => r.startOfLine.then(P.regexp(/<center>([\s\S]+?)<\/center>/, 1).map(x => createMfmNode('center', {}, r.inline.atLeast(1).tryParse(x)))),
+ 	inlineCode: () => P.regexp(/`([^´\n]+?)`/, 1).map(x => createMfmNode('inlineCode', { code: x })),
+@@ -338,7 +342,7 @@
+ 			const argsPart = match[2];
+ 			const content = match[3];
+ 
+-			if (!['tada', 'jelly', 'twitch', 'shake', 'spin', 'jump', 'bounce', 'flip', 'rgbshift', 'x2', 'x3', 'x4', 'font', 'blur'].includes(name)) {
++			if (!['tada', 'jelly', 'twitch', 'shake', 'spin', 'jump', 'bounce', 'flip', 'rgbshift', 'x2', 'x3', 'x4', 'x5', 'x6', 'font', 'blur'].includes(name)) {
+ 				return P.makeFailure(i, 'unknown fn name');
+ 			}
+ 
+diff -r -u misskey-a/src/server/api/endpoints/notes/create.ts "misskey-b/src/server/api/endpoints/notes/create.ts"
+--- misskey-a/src/server/api/endpoints/notes/create.ts	2021-08-23 02:04:12.784693200 +0900
++++ "misskey-b/src/server/api/endpoints/notes/create.ts"	2021-08-07 19:27:32.936321600 +0900
+@@ -144,7 +144,7 @@
+ 		},
+ 
+ 		fileIds: {
+-			validator: $.optional.arr($.type(ID)).unique().range(1, 8),
++			validator: $.optional.arr($.type(ID)).unique().range(1, 20),
+ 			transform: transformMany,
+ 			desc: {
+ 				'ja-JP': '添付するファイル'
+@@ -152,7 +152,7 @@
+ 		},
+ 
+ 		mediaIds: {
+-			validator: $.optional.arr($.type(ID)).unique().range(1, 8),
++			validator: $.optional.arr($.type(ID)).unique().range(1, 20),
+ 			transform: transformMany,
+ 			deprecated: true,
+ 			desc: {

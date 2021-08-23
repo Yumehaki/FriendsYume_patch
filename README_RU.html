@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset = "utf-8" />
+</head>
+<body>
+<h1>
+README Русская версия
+</h1>
+<h2>
+1. Как представить Meisskey
+</h2>
+См. <a href="https://github.com/mei23/memo/blob/master/misskey/Setup-Ubuntu2004-Quick.md"> здесь </a>. <br/> <br/>
+<h2>
+2. Как преобразовать в Friends Yume для ознакомления (только в первый раз)
+</h2>
+Сначала представьте Мейсуки, как в главе 1.
+<pre> <code>
+$ sudo su - misskey # Переключиться на пользователя misskey
+$ cd ~ /misskey
+$ git clone https://github.com/Yumehaki/FriendsYume_patch.git patch
+$ cd patch
+$ ./update.bash # Если возникнут какие-либо вопросы, нажимайте Enter, пока они не исчезнут.
+</code> </pre> <br /> <br />
+<h2>
+3. Как преобразовать в Friends Yume для ознакомления (второй и последующие разы)
+</h2>
+<pre> <code>
+$ sudo su - misskey # Переключиться на пользователя misskey
+$ cd ~ /misskey /patch
+$ git pull
+$ ./update.bash # Если возникнут вопросы, нажимайте Enter, пока они не исчезнут.
+</code> </pre> <br /> <br />
+<h2>
+4. Как получить исходный код
+</h2>
+<pre> <code>
+$ cd ~ # Перейти в каталог, в который вы хотите поместить исходный код
+$ git clone https://github.com/mei23/misskey.git -b 10.102.496-m544
+$ cd misskey
+$ git clone https://github.com/Yumehaki/FriendsYume_patch.git -b 10.103.0.0-ypf
+$ cd patch
+$ ./sourceCheck.bash # Если у вас возникнут вопросы, нажимайте Enter, пока они не исчезнут.
+</code> </pre> <br /> <br />
+</body>
+</html>

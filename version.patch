@@ -1,0 +1,19 @@
+diff -r -u "misskey-ypF-10.103.0.0\316\261/package.json" "misskey-ypF-10.103.0.0\316\262/package.json"
+--- "misskey-a/package.json"	2021-08-23 02:04:10.280607600 +0900
++++ "misskey-b/package.json"	2021-08-07 20:10:21.835644300 +0900
+@@ -1,11 +1,11 @@
+ {
+ 	"name": "misskey",
+-	"author": "mei23 <m@m544.net>",
+-	"version": "10.102.496-m544",
+-	"codename": "m544",
++	"author": "esorabi <aneqt@yumehaki.com> , konoha <konoha@yumehaki.com> | <admin@yumehaki.com>",
++	"version": "10.103.0.0-ypf",
++	"codename": "ypf",
+ 	"repository": {
+ 		"type": "git",
+-		"url": "https://github.com/mei23/misskey.git"
++		"url": "https://github.com/Yumehaki/misskey.git"
+ 	},
+ 	"main": "./index.js",
+ 	"private": true,

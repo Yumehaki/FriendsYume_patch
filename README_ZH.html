@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+</head>
+<body>
+<h1>
+README 台灣中文版
+</h1>
+<h2>
+1.如何安裝 Meisskey
+</h2>
+請參閱<a href="https://github.com/mei23/memo/blob/master/misskey/Setup-Ubuntu2004-Quick.md">此處</a>。 <br/> <br/>
+<h2>
+2.如何轉成Friends Yume進行介紹（僅限第一次）
+</h2>
+首先，如第 1 章介紹 Meisskey。
+<pre> <code>
+$ sudo su --misskey # 切換到misskey用戶
+$ cd ~/misskey
+$ git clone https://github.com/Yumehaki/FriendsYume_patch.git patch
+$ cd patch
+$ ./update.bash # 如果有任何問題返回，請按 Enter 直到它消失。
+</code> </pre> <br /> <br />
+<h2>
+3.如何轉成Friends Yume進行介紹（第二次及以後）
+</h2>
+<pre> <code>
+$ sudo su --misskey # 切換到misskey用戶
+$ cd ~/misskey/patch
+$ git pull
+$ ./update.bash # 如果您有任何問題，請按 Enter 直到它們消失。
+</code> </pre> <br /> <br />
+<h2>
+4.如何獲取源代碼
+</h2>
+<pre> <code>
+$ cd ~ # 移動到你想放置源代碼的目錄
+$ git clone https://github.com/mei23/misskey.git -b 10.102.496-m544
+$ cdmisskey
+$ git clone https://github.com/Yumehaki/FriendsYume_patch.git -b 10.103.0.0-ypf
+$ cd patch
+$ ./sourceCheck.bash # 如果您有任何問題，請按 Enter 直到它們消失。
+</code> </pre> <br /> <br />
+</body>
+</html>
